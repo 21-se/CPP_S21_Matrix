@@ -57,10 +57,10 @@ void S21Matrix::MulMatrix(const S21Matrix& other) {
   for (int i = 0; i < rows_; ++i) {
     for (int j = 0; j < other.cols_; ++j) {
       for (int k = 0; k < cols_; ++k)
-      result.matrix_[i][j] += matrix_[i][k] * other.matrix_[k][j];
+        result.matrix_[i][j] += matrix_[i][k] * other.matrix_[k][j];
     }
   }
-  
+
   FreeMatrix();
   rows_ = result.rows_;
   cols_ = result.cols_;
@@ -108,14 +108,14 @@ S21Matrix S21Matrix::GetMinorMatrix(int row, int col) const {
 
 double S21Matrix::Determinant() {
   if (rows_ != cols_) {
-    throw std::logic_error("The matrix must be square to calculate the determinant");
+    throw std::logic_error(
+        "The matrix must be square to calculate the determinant");
   }
   double result = 0;
   if (rows_ == 1)
     result = matrix_[0][0];
   else if (rows_ == 2)
-    result =
-        matrix_[0][0] * matrix_[1][1] - matrix_[0][1] * matrix_[1][0];
+    result = matrix_[0][0] * matrix_[1][1] - matrix_[0][1] * matrix_[1][0];
   else {
     result = 0;
     for (int j = 0; j < rows_; ++j) {
@@ -130,7 +130,8 @@ double S21Matrix::Determinant() {
 
 S21Matrix S21Matrix::CalcComplements() {
   if (rows_ != cols_) {
-    throw std::logic_error("The matrix must be square to calculate CalcComplements");
+    throw std::logic_error(
+        "The matrix must be square to calculate CalcComplements");
   }
 
   S21Matrix result(rows_, cols_);
@@ -159,7 +160,7 @@ S21Matrix S21Matrix::InverseMatrix() {
     S21Matrix result(1, 1);
     result.matrix_[0][0] = 1 / matrix_[0][0];
     return result;
-  } 
+  }
   S21Matrix complements = CalcComplements();
   S21Matrix result = complements.Transpose();
   for (int i = 0; i < rows_; i++) {

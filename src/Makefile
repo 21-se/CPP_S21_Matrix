@@ -18,7 +18,7 @@ COV_DIR   = coverage_report
 TEST_DIR  = tests
 UTILS_DIR = utils
 
-SOURCES = $(wildcard *.cpp) $(wildcard $(UTILS_DIR)/*.cpp)
+SOURCES = $(wildcard *.cpp)
 OBJECTS = $(addprefix $(OBJ_DIR)/,$(notdir $(SOURCES:.cpp=.o)))
 TESTSRC = $(wildcard $(TEST_DIR)/*.cpp)
 
@@ -68,10 +68,10 @@ clean:
 	rm -rf *.gcda
 
 format:
-	clang-format --style=Google -i *.cpp *.h $(TEST_DIR)/*.h $(TEST_DIR)/*.cpp $(UTILS_DIR)/*.h $(UTILS_DIR)/*.cpp
+	clang-format --style=Google -i *.cpp *.h $(TEST_DIR)/*.cpp
 
 check-format:
-	clang-format --style=Google -n *.cpp *.h $(TEST_DIR)/*.h $(TEST_DIR)/*.cpp $(UTILS_DIR)/*.h $(UTILS_DIR)/*.cpp
+	clang-format --style=Google -n *.cpp *.h $(TEST_DIR)/*.cpp
 
 cppcheck:
 	cppcheck --enable=all --check-level=exhaustive  --suppress=missingIncludeSystem .

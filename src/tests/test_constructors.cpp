@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "../s21_matrix_oop.h"
 
 TEST(ConstructorsTest, Default) {
@@ -21,7 +22,7 @@ TEST(ConstructorsTest, Parameters) {
   }
 }
 
-TEST(ConstructorsTest, NegativeRowParameter) {  
+TEST(ConstructorsTest, NegativeRowParameter) {
   EXPECT_THROW(S21Matrix M(-1, 5), std::invalid_argument);
 }
 
@@ -54,7 +55,7 @@ TEST(ConstructorsTest, CopyConstructor) {
 
 TEST(ConstructorsTest, CopyConstructorNullPtrMatrix) {
   S21Matrix M;
-  S21Matrix N(std::move(M)); // Матрица M стала пустой (matrix_ == nullptr)
+  S21Matrix N(std::move(M));  // Матрица M стала пустой (matrix_ == nullptr)
 
   S21Matrix C(M);
 
@@ -67,10 +68,11 @@ TEST(ConstructorsTest, TransferConstructor) {
   M(0, 0) = 5.5;
   M(1, 1) = 3.3;
 
-  S21Matrix N(std::move(M)); // std::move принудительно делает M rvalue - выражением
-  // std::move: Не копирует данные, а "разрешает" забрать их. 
+  S21Matrix N(
+      std::move(M));  // std::move принудительно делает M rvalue - выражением
+  // std::move: Не копирует данные, а "разрешает" забрать их.
   // Без него вызовется конструктор копирования.
-  
+
   EXPECT_EQ(N.GetRows(), 2);
   EXPECT_EQ(N.GetCols(), 2);
   EXPECT_DOUBLE_EQ(N(0, 0), 5.5);

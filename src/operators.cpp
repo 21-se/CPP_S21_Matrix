@@ -60,7 +60,7 @@ S21Matrix& S21Matrix::operator=(const S21Matrix& other) {
     }
   }
   matrix_ = T.matrix_;
-  
+
   T.matrix_ = nullptr;
   T.rows_ = 0;
   T.cols_ = 0;

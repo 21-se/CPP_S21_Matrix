@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "../s21_matrix_oop.h"
 
 TEST(EqMatrixTest, Equal) {
@@ -42,15 +43,19 @@ TEST(EqMatrixTest, DifferentValues) {
 TEST(SumMatrixTest, Basic) {
   S21Matrix A(2, 2);
   S21Matrix B(2, 2);
-  
-  A(0, 0) = 1.0; A(0, 1) = 2.0;
-  A(1, 0) = 3.0; A(1, 1) = 4.0;
-  
-  B(0, 0) = 5.0; B(0, 1) = 6.0;
-  B(1, 0) = 7.0; B(1, 1) = 8.0;
-  
+
+  A(0, 0) = 1.0;
+  A(0, 1) = 2.0;
+  A(1, 0) = 3.0;
+  A(1, 1) = 4.0;
+
+  B(0, 0) = 5.0;
+  B(0, 1) = 6.0;
+  B(1, 0) = 7.0;
+  B(1, 1) = 8.0;
+
   A.SumMatrix(B);
-  
+
   EXPECT_DOUBLE_EQ(A(0, 0), 6.0);
   EXPECT_DOUBLE_EQ(A(0, 1), 8.0);
   EXPECT_DOUBLE_EQ(A(1, 0), 10.0);
@@ -67,13 +72,17 @@ TEST(SumMatrixTest, ExpectionThrow) {
 TEST(SubMatrixTest, Basic) {
   S21Matrix A(2, 2);
   S21Matrix B(2, 2);
-  
-  A(0, 0) = 1.0; A(0, 1) = 9.0;
-  A(1, 0) = 3.0; A(1, 1) = 8.0;
-  
-  B(0, 0) = 5.0; B(0, 1) = 6.0;
-  B(1, 0) = 1.0; B(1, 1) = 8.0;
-  
+
+  A(0, 0) = 1.0;
+  A(0, 1) = 9.0;
+  A(1, 0) = 3.0;
+  A(1, 1) = 8.0;
+
+  B(0, 0) = 5.0;
+  B(0, 1) = 6.0;
+  B(1, 0) = 1.0;
+  B(1, 1) = 8.0;
+
   A.SubMatrix(B);
 
   EXPECT_DOUBLE_EQ(A(0, 0), -4.0);
@@ -92,10 +101,12 @@ TEST(SubMatrixTest, ExpectionThrow) {
 TEST(MulNumberTest, Basic) {
   S21Matrix A(2, 2);
   double num = 3.0;
-  
-  A(0, 0) = 1.0; A(0, 1) = 9.0;
-  A(1, 0) = 3.0; A(1, 1) = 8.0;
-  
+
+  A(0, 0) = 1.0;
+  A(0, 1) = 9.0;
+  A(1, 0) = 3.0;
+  A(1, 1) = 8.0;
+
   A.MulNumber(num);
 
   EXPECT_DOUBLE_EQ(A(0, 0), 3.0);
@@ -107,20 +118,24 @@ TEST(MulNumberTest, Basic) {
 TEST(MulMatrixTest, Basic) {
   S21Matrix A(3, 2);
   S21Matrix B(2, 3);
-  
-  A(0, 0) = 1.0; A(0, 1) = 9.0;
-  A(1, 0) = 3.0; A(1, 1) = 8.0;
-  A(2, 0) = 2.0; A(2, 1) = 5.0;
-  
-  B(0, 0) = 5.0; B(0, 1) = 6.0; B(0, 2) = 4.0;
-  B(1, 0) = 1.0; B(1, 1) = 8.0; B(1, 2) = 7.0;
+
+  A(0, 0) = 1.0;
+  A(0, 1) = 9.0;
+  A(1, 0) = 3.0;
+  A(1, 1) = 8.0;
+  A(2, 0) = 2.0;
+  A(2, 1) = 5.0;
+
+  B(0, 0) = 5.0;
+  B(0, 1) = 6.0;
+  B(0, 2) = 4.0;
+  B(1, 0) = 1.0;
+  B(1, 1) = 8.0;
+  B(1, 2) = 7.0;
 
   double expected[3][3] = {
-    {14.0, 78.0, 67.0},
-    {23.0, 82.0, 68.0},
-    {15.0, 52.0, 43.0}
-  };
-  
+      {14.0, 78.0, 67.0}, {23.0, 82.0, 68.0}, {15.0, 52.0, 43.0}};
+
   A.MulMatrix(B);
 
   EXPECT_EQ(A.GetRows(), A.GetCols());
@@ -141,9 +156,12 @@ TEST(MulMatrixTest, ExpectionThrow) {
 
 TEST(TransponseTest, basic) {
   S21Matrix A(3, 2);
-  A(0, 0) = 1; A(0, 1) = 2;
-  A(1, 0) = 3; A(1, 1) = 4;
-  A(2, 0) = 5; A(2, 1) = 6;
+  A(0, 0) = 1;
+  A(0, 1) = 2;
+  A(1, 0) = 3;
+  A(1, 1) = 4;
+  A(2, 0) = 5;
+  A(2, 1) = 6;
 
   S21Matrix B = A.Transpose();
 
@@ -166,40 +184,66 @@ TEST(DeterminantTest, Matrix1x1) {
 
 TEST(DeterminantTest, Matrix2x2) {
   S21Matrix A(2, 2);
-  A(0, 0) = 1.0; A(0, 1) = 2.0;
-  A(1, 0) = 3.0; A(1, 1) = 4.0;
-  
+  A(0, 0) = 1.0;
+  A(0, 1) = 2.0;
+  A(1, 0) = 3.0;
+  A(1, 1) = 4.0;
+
   double det = A.Determinant();
   EXPECT_NEAR(det, -2.0, 1e-7);
 }
 
 TEST(DeterminantTest, Matrix3x3_NonZero) {
   S21Matrix A(3, 3);
-  A(0, 0) = 1.0; A(0, 1) = 2.0; A(0, 2) = 3.0;
-  A(1, 0) = 4.0; A(1, 1) = 5.0; A(1, 2) = 6.0;
-  A(2, 0) = 7.0; A(2, 1) = 8.0; A(2, 2) = 10.0;
-  
+  A(0, 0) = 1.0;
+  A(0, 1) = 2.0;
+  A(0, 2) = 3.0;
+  A(1, 0) = 4.0;
+  A(1, 1) = 5.0;
+  A(1, 2) = 6.0;
+  A(2, 0) = 7.0;
+  A(2, 1) = 8.0;
+  A(2, 2) = 10.0;
+
   double det = A.Determinant();
   EXPECT_NEAR(det, -3.0, 1e-7);
 }
 
 TEST(DeterminantTest, Matrix3x3_Zero) {
   S21Matrix A(3, 3);
-  A(0, 0) = 1.0; A(0, 1) = 2.0; A(0, 2) = 3.0;
-  A(1, 0) = 4.0; A(1, 1) = 5.0; A(1, 2) = 6.0;
-  A(2, 0) = 7.0; A(2, 1) = 8.0; A(2, 2) = 9.0;
-  
+  A(0, 0) = 1.0;
+  A(0, 1) = 2.0;
+  A(0, 2) = 3.0;
+  A(1, 0) = 4.0;
+  A(1, 1) = 5.0;
+  A(1, 2) = 6.0;
+  A(2, 0) = 7.0;
+  A(2, 1) = 8.0;
+  A(2, 2) = 9.0;
+
   double det = A.Determinant();
   EXPECT_NEAR(det, 0.0, 1e-7);
 }
 
 TEST(DeterminantTest, Matrix4x4) {
   S21Matrix A(4, 4);
-  A(0, 0) = 1; A(0, 1) = 0; A(0, 2) = 2; A(0, 3) = -1;
-  A(1, 0) = 0; A(1, 1) = 1; A(1, 2) = 0; A(1, 3) = 2;
-  A(2, 0) = 2; A(2, 1) = 0; A(2, 2) = 1; A(2, 3) = 0;
-  A(3, 0) = 0; A(3, 1) = 2; A(3, 2) = 0; A(3, 3) = 1;
-  
+  A(0, 0) = 1;
+  A(0, 1) = 0;
+  A(0, 2) = 2;
+  A(0, 3) = -1;
+  A(1, 0) = 0;
+  A(1, 1) = 1;
+  A(1, 2) = 0;
+  A(1, 3) = 2;
+  A(2, 0) = 2;
+  A(2, 1) = 0;
+  A(2, 2) = 1;
+  A(2, 3) = 0;
+  A(3, 0) = 0;
+  A(3, 1) = 2;
+  A(3, 2) = 0;
+  A(3, 3) = 1;
+
   double det = A.Determinant();
   EXPECT_NEAR(det, 9.0, 1e-7);
 }
@@ -210,21 +254,27 @@ TEST(DeterminantTest, NonSquareMatrix) {
 }
 
 TEST(CalcComplementsTest, Matrix1x1) {
-    S21Matrix M(1, 1);
-    M(0, 0) = 5.0;
+  S21Matrix M(1, 1);
+  M(0, 0) = 5.0;
 
-    S21Matrix res = M.CalcComplements();
-    
-    EXPECT_EQ(res.GetRows(), 1);
-    EXPECT_EQ(res.GetCols(), 1);
-    EXPECT_DOUBLE_EQ(res(0, 0), 1.0); 
+  S21Matrix res = M.CalcComplements();
+
+  EXPECT_EQ(res.GetRows(), 1);
+  EXPECT_EQ(res.GetCols(), 1);
+  EXPECT_DOUBLE_EQ(res(0, 0), 1.0);
 }
 
 TEST(CalcComplementsTest, Matrix3x3_Normal) {
   S21Matrix M(3, 3);
-  M(0, 0) = 1; M(0, 1) = 2; M(0, 2) = 3;
-  M(1, 0) = 0; M(1, 1) = 4; M(1, 2) = 2;
-  M(2, 0) = 5; M(2, 1) = 2; M(2, 2) = 1;
+  M(0, 0) = 1;
+  M(0, 1) = 2;
+  M(0, 2) = 3;
+  M(1, 0) = 0;
+  M(1, 1) = 4;
+  M(1, 2) = 2;
+  M(2, 0) = 5;
+  M(2, 1) = 2;
+  M(2, 2) = 1;
 
   S21Matrix res = M.CalcComplements();
 
@@ -246,11 +296,13 @@ TEST(CalcComplementsTest, NonSquareMatrix) {
 
 TEST(CalcComplementsTest, Immutability) {
   S21Matrix M(2, 2);
-  M(0, 0) = 1; M(0, 1) = 2;
-  M(1, 0) = 3; M(1, 1) = 4;
-  
+  M(0, 0) = 1;
+  M(0, 1) = 2;
+  M(1, 0) = 3;
+  M(1, 1) = 4;
+
   M.CalcComplements();
-  
+
   EXPECT_DOUBLE_EQ(M(0, 0), 1);
   EXPECT_DOUBLE_EQ(M(1, 1), 4);
 }
@@ -259,17 +311,23 @@ TEST(InverseMatrixTest, Matrix1x1) {
   S21Matrix M(1, 1);
   M(0, 0) = 5.0;
   S21Matrix res = M.InverseMatrix();
-  
+
   EXPECT_NEAR(res(0, 0), 0.2, 1e-7);
 }
 
 TEST(InverseMatrixTest, ZeroDeterminant) {
   S21Matrix M(3, 3);
-  
-  M(0, 0) = 1; M(0, 1) = 2; M(0, 2) = 3;
-  M(1, 0) = 2; M(1, 1) = 4; M(1, 2) = 6;
-  M(2, 0) = 7; M(2, 1) = 8; M(2, 2) = 9;
-  
+
+  M(0, 0) = 1;
+  M(0, 1) = 2;
+  M(0, 2) = 3;
+  M(1, 0) = 2;
+  M(1, 1) = 4;
+  M(1, 2) = 6;
+  M(2, 0) = 7;
+  M(2, 1) = 8;
+  M(2, 2) = 9;
+
   EXPECT_THROW(M.InverseMatrix(), std::logic_error);
 }
 
@@ -280,20 +338,28 @@ TEST(InverseMatrixTest, NonSquare) {
 
 TEST(InverseMatrixTest, SmallDeterminant) {
   S21Matrix M(2, 2);
-  M(0, 0) = 0.0001; M(0, 1) = 0.0;
-  M(1, 0) = 0.0;    M(1, 1) = 0.0001;
-  
+  M(0, 0) = 0.0001;
+  M(0, 1) = 0.0;
+  M(1, 0) = 0.0;
+  M(1, 1) = 0.0001;
+
   EXPECT_NO_THROW(M.InverseMatrix());
-  
+
   S21Matrix res = M.InverseMatrix();
   EXPECT_NEAR(res(0, 0), 10000.0, 1e-7);
 }
 
 TEST(InverseMatrixTest, Matrix3x3_IdentityCheck) {
   S21Matrix M(3, 3);
-  M(0, 0) = 2; M(0, 1) = 5; M(0, 2) = 7;
-  M(1, 0) = 6; M(1, 1) = 3; M(1, 2) = 4;
-  M(2, 0) = 5; M(2, 1) = -2; M(2, 2) = -3;
+  M(0, 0) = 2;
+  M(0, 1) = 5;
+  M(0, 2) = 7;
+  M(1, 0) = 6;
+  M(1, 1) = 3;
+  M(1, 2) = 4;
+  M(2, 0) = 5;
+  M(2, 1) = -2;
+  M(2, 2) = -3;
 
   S21Matrix inv = M.InverseMatrix();
   S21Matrix identity = M * inv;

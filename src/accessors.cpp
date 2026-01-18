@@ -15,7 +15,7 @@ void S21Matrix::SetRows(int new_rows) {
     this->rows_ = T.rows_;
     this->cols_ = T.cols_;
     this->matrix_ = T.matrix_;
-    
+
     T.rows_ = 0;
     T.cols_ = 0;
     T.matrix_ = nullptr;

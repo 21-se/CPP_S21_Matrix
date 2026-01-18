@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "../s21_matrix_oop.h"
 
 TEST(Accessors, GetRowsCols) {
@@ -10,7 +11,7 @@ TEST(Accessors, GetRowsCols) {
 TEST(Accessors, SetRows) {
   S21Matrix A;
   A.SetRows(7);
-  
+
   EXPECT_EQ(A.GetRows(), 7);
   EXPECT_EQ(A.GetCols(), 3);
 }
@@ -27,7 +28,7 @@ TEST(Accessors, SetRowsCols) {
   S21Matrix A;
   A.SetRows(1);
   A.SetCols(1);
-  
+
   EXPECT_EQ(A.GetRows(), 1);
   EXPECT_EQ(A.GetCols(), 1);
 }
