@@ -1,14 +1,14 @@
 #include "s21_matrix_oop.h"
 
 double& S21Matrix::operator()(int i, int j) {
-  if (i < 0 || i >= rows_ || i < 0 || j >= cols_) {
+  if (i < 0 || i >= rows_ || j < 0 || j >= cols_) {
     throw std::out_of_range("Index out of bounds");
   }
   return matrix_[i][j];
 }
 
 double S21Matrix::operator()(int i, int j) const {
-  if (i < 0 || i >= rows_ || i < 0 || j >= cols_) {
+  if (i < 0 || i >= rows_ || j < 0 || j >= cols_) {
     throw std::out_of_range("Index out of bounds");
   }
   return matrix_[i][j];

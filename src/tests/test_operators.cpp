@@ -20,7 +20,7 @@ TEST(OperatorParenthesesTest, ConstRead) {
   S21Matrix M(2, 2);
   M(1, 1) = 10.1;
 
-  S21Matrix& M_const = M;
+  const S21Matrix& M_const = M;
   double value = static_cast<const S21Matrix&>(M_const)(1, 1);
 
   EXPECT_DOUBLE_EQ(value, 10.1);
