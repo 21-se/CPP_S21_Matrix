@@ -16,7 +16,6 @@ endif
 OBJ_DIR   = object_files
 COV_DIR   = coverage_report
 TEST_DIR  = tests
-UTILS_DIR = utils
 
 SOURCES = $(wildcard *.cpp)
 OBJECTS = $(addprefix $(OBJ_DIR)/,$(notdir $(SOURCES:.cpp=.o)))
@@ -28,14 +27,6 @@ TESTING_LOG = test_report.log
 STATIC_LIB = s21_matrix_oop.a
 
 $(OBJ_DIR)/%.o: %.cpp
-	$(shell mkdir -p $(OBJ_DIR))
-	$(COMPILER) $(CPP_FLAGS) -c $< -o $@
-
-$(OBJ_DIR)/%.o: $(UTILS_DIR)/%.cpp
-	$(shell mkdir -p $(OBJ_DIR))
-	$(COMPILER) $(CPP_FLAGS) -c $< -o $@
-
-$(OBJ_DIR)/%.o: $(UTILS_DIR)/%.cpp
 	$(shell mkdir -p $(OBJ_DIR))
 	$(COMPILER) $(CPP_FLAGS) -c $< -o $@
 
